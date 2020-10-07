@@ -14,7 +14,7 @@ var lowLag = new function(){
 
 	this.audioTagTimeToLive = 5000;
 
-	this.sm2url = 'sm2/swf/';
+	//this.sm2url = 'sm2/swf/';
 
 	this.soundUrl = "";
 
@@ -69,9 +69,9 @@ var lowLag = new function(){
 			if(config['audioTagTimeToLive'] != undefined){
 				lowLag.audioTagTimeToLive = config['audioTagTimeToLive'];
 			} 
-			if(config['sm2url'] != undefined){
+			/*if(config['sm2url'] != undefined){
 				lowLag.sm2url = config['sm2url'];
-			} 
+			}*/ 
 			if(config['urlPrefix'] != undefined){
 				lowLag.soundUrl = config['urlPrefix'];
 			} 
@@ -93,9 +93,9 @@ var lowLag = new function(){
 		}
 		
 
-		var format = "sm2";
-		if(force != undefined) format = force;
-		else {
+		//var format = "sm2";
+		//if(force != undefined) format = force;
+		if(force == undefined) {
 			if(window.AudioContext || window.webkitAudioContext ) format = 'audioContext';
 			else if(navigator.userAgent.indexOf("Firefox")!=-1) format = 'audioTag';
 		}
@@ -118,7 +118,7 @@ var lowLag = new function(){
 				this.play = this.playSoundAudioTag;
 			break;
 
-			case 'sm2':
+/*			case 'sm2':
 				this.msg("init SoundManager2");
 
 				this.load = this.loadSoundSM2;
@@ -129,12 +129,12 @@ var lowLag = new function(){
 
 
 			break;
-
+*/
 		}		
 
 
 	}
-	this.sm2IsReady = false;
+	/*this.sm2IsReady = false;
 //sm2 has a callback that tells us when it's ready, so we may need to store
 //requests to loadsound, and then call sm2 once it has told us it is set.
 	this.sm2ToLoad = [];
@@ -177,7 +177,7 @@ var lowLag = new function(){
 
 		soundManager.play(tag);
 	}
-
+*/
 
 
 //we'll use the tag they hand us, or else the url as the tag if it's a single tag,

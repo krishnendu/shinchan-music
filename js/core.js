@@ -4,7 +4,7 @@ Array.prototype.remove = function(el) {
 const InstrumentEnum = Object.freeze({
   BONGO: 0,
   KEYBOARD: 1,
-  MEOW: 3,
+  SHINCHAN: 3,
   CYMBAL: 4,
   MARIMBA: 5,
   TAMBOURINE: 6,
@@ -52,7 +52,7 @@ const InstrumentPerKeyEnum = Object.freeze({
   "8": InstrumentEnum.KEYBOARD,
   "9": InstrumentEnum.KEYBOARD,
   "0": InstrumentEnum.KEYBOARD,
-  " ": InstrumentEnum.MEOW,
+  " ": InstrumentEnum.SHINCHAN,
   "C": InstrumentEnum.CYMBAL,
   "Q": InstrumentEnum.MARIMBA,
   "W": InstrumentEnum.MARIMBA,
@@ -84,7 +84,7 @@ const TapKeyEquivalentEnum = Object.freeze({
     "COWBELL": ["F"]
   },
   "tap-space": {
-    "MEOW": [" "]
+    "SHINCHAN": [" "]
   },
   "tap-1": {
     "KEYBOARD": ["1"],
@@ -130,7 +130,7 @@ const TapKeyEquivalentEnum = Object.freeze({
 const TapKeysPerLayerEnum = Object.freeze({
   "layer-bongo": ["tap-left", "tap-right"],
   "layer-keyboard": ["tap-keys"],
-  "layer-meow": ["tap-space"],
+  "layer-shinchan": ["tap-space"],
   "layer-cymbal": ["tap-right"],
   "layer-marimba": ["tap-keys"],
   "layer-tambourine": ["tap-right"],
@@ -139,7 +139,7 @@ const TapKeysPerLayerEnum = Object.freeze({
 const LayersPerInstrumentEnum = Object.freeze({
   "layer-bongo": InstrumentEnum.BONGO,
   "layer-keyboard": InstrumentEnum.KEYBOARD,
-  "layer-meow": InstrumentEnum.MEOW,
+  "layer-shinchan": InstrumentEnum.SHINCHAN,
   "layer-cymbal": InstrumentEnum.CYMBAL,
   "layer-marimba": InstrumentEnum.MARIMBA,
   "layer-tambourine": InstrumentEnum.TAMBOURINE,
@@ -160,7 +160,7 @@ $(document).ready(function() {
   $.load("bongo", 0, 1);
   $.load("keyboard", 0, 9);
   $.load("marimba", 0, 9);
-  $.loadSimple("meow");
+  $.loadSimple("shinchan");
   $.loadSimple("cymbal");
   $.loadSimple("tambourine");
   $.loadSimple("cowbell");
@@ -185,13 +185,13 @@ $.wait = function(callback, ms) {
 $.play = function(instrument, key, state) {
   var instrumentName = Object.keys(InstrumentEnum).find(k => InstrumentEnum[k] === instrument).toLowerCase();
   var commonKey = KeyEnum[key];
-  var id = "#" + (instrument == InstrumentEnum.MEOW ? "mouth" : "paw-" + ((instrument == InstrumentEnum.BONGO ? commonKey : commonKey <= 5 && commonKey != 0 ? 0 : 1) == 0 ? "left" : "right"));
+  var id = "#" + (instrument == InstrumentEnum.SHINCHAN ? "mouth" : "paw-" + ((instrument == InstrumentEnum.BONGO ? commonKey : commonKey <= 5 && commonKey != 0 ? 0 : 1) == 0 ? "left" : "right"));
   if (state == true) {
     if (jQuery.inArray(commonKey, pressed) !== -1) {
       return;
     }
     pressed.push(commonKey);
-    if (instrument != InstrumentEnum.MEOW) {
+    if (instrument != InstrumentEnum.SHINCHAN) {
       $(".instruments>div").each(function(index) {
         $(this).css("visibility", ($(this).attr("id") === instrumentName) ? "visible" : "hidden");
       });
@@ -213,7 +213,8 @@ $.layers = function(selectedLayer) {
       }
       var instrument = LayersPerInstrumentEnum[selectedLayer];
       var instrumentName = Object.keys(InstrumentEnum).find(k => InstrumentEnum[k] === instrument).toLowerCase();
-      if (instrument != InstrumentEnum.MEOW) {
+      if (instrument != InstrumentEnum.SHINCHAN
+) {
         $(".instruments>div").each(function(index) {
           $(this).css("visibility", ($(this).attr("id") === instrumentName) ? "visible" : "hidden");
         });
