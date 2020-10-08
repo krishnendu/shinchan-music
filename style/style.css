@@ -15,15 +15,11 @@
   }
 }
 
-html,
 body {
-  overflow-x: hidden;
+  overflow: hidden;
   margin: 0;
-}
-
-body {
   position: relative;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   background-color: #fff;
   -moz-user-select: none;
@@ -32,7 +28,7 @@ body {
   user-select: none;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
-  background: url(ss.jpg);
+  background: url(./ss.jpg) center center/ cover;
 }
 
 header,
@@ -70,24 +66,6 @@ hr {
   z-index: 10;
 }
 
-a#github {
-  z-index: 1000;
-}
-
-svg#github {
-  fill: #000;
-  color: #fff;
-  position: absolute;
-  top: 0;
-  border: 0;
-  right: 0;
-  z-index: 1000;
-}
-
-svg#github:hover .octo-arm {
-  animation: wave 560ms ease-in-out;
-}
-
 select#select-instrument {
   position: relative;
   width: 240px;
@@ -119,7 +97,7 @@ select#select-instrument option {
 #container {
   position: absolute;
   top: 65%;
-  left: 50%;
+  left: 60%;
   transform: translate(-50%, -50%);
   width: 800px;
   height: 450px;
@@ -235,57 +213,70 @@ select#select-instrument option {
 }
 
 .cat > #head {
-  background-image: url(../images/cat.png);
+  background-image: url(./images/cat.png);
   z-index: 10;
 }
 
 .cat > #mouth {
-  background-image: url(../images/mouth.png);
+  background-image: url(./images/mouth.png);
   z-index: 20;
 }
 
 .cat > #paw-left {
-  background-image: url(../images/paw-left.png);
+  background-image: url(./images/paw-left.png);
   z-index: 30;
 }
 
 .cat > #paw-right {
-  background-image: url(../images/paw-right.png);
+  background-image: url(./images/paw-right.png);
   z-index: 30;
 }
 
 .instruments {
   z-index: 20;
+  /* animation: add 30s linear infinite; */
 }
+/* @keyframes add {
+  0% {
+    transform: rotateX(1deg) rotateZ(10deg) perspective(100px);
+  }
+  50% {
+    transform: rotateX(90deg) rotateZ(10deg) perspective(100px);
+  }
+  100% {
+    transform: rotateX(1deg) rotateZ(10deg) perspective(100px);
+  }
+} */
 
 .instruments > #bongo,
 #layer-bongo {
-  background-image: url(../images/bongo.png);
+  background-image: url(./images/bongo.png);
 }
 
 .instruments > #keyboard,
 #layer-keyboard {
-  background-image: url(../images/keyboard.png);
+  transform: rotateX(50deg) rotateZ(10deg) perspective(100px);
+  background-image: url(./images/keyboard.png);
 }
 
 .instruments > #cymbal,
 #layer-cymbal {
-  background-image: url(../images/cymbal.png);
+  background-image: url(./images/cymbal.png);
 }
 
 .instruments > #marimba,
 #layer-marimba {
-  background-image: url(../images/marimba.png);
+  background-image: url(./images/marimba.png);
 }
 
 .instruments > #tambourine,
 #layer-tambourine {
-  background-image: url(../images/tambourine.png);
+  background-image: url(./images/tambourine.png);
 }
 
 .instruments > #cowbell,
 #layer-cowbell {
-  background-image: url(../images/cowbell.png);
+  background-image: url(./images/cowbell.png);
 }
 
 .instruments > #keyboard,
@@ -300,7 +291,7 @@ select#select-instrument option {
   body {
     background-color: #000;
     color: #fff !important;
-    background: url(ss.jpg);
+    background: url(ss.jpg) center center / cover;
   }
 
   header a,
@@ -310,11 +301,6 @@ select#select-instrument option {
 
   hr {
     background: #fff !important;
-  }
-
-  svg#github {
-    fill: #fff !important;
-    color: #000 !important;
   }
 
   .key {
@@ -347,10 +333,6 @@ select#select-instrument option {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  svg#github:hover .octo-arm {
-    animation: none !important;
-  }
-
   select#select-instrument,
   .tap {
     transition: none !important;

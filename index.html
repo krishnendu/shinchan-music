@@ -1,102 +1,107 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html>
   <head>
     <title></title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0"/>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans"
+      rel="stylesheet"
+    />
     <link href="./style/style.css" rel="stylesheet" />
     <script src="./js/lowLag.js"></script>
     <script src="./js/core.js"></script>
   </head>
-
   <body>
-    <header>
-      <div id="keys">
-        <div>
-          <span>Bongos</span>
-          <span class="key">A</span>
-          <span class="key">D</span>
-        </div>
-        <div>
-          <span>Cymbal</span>
-          <span class="key">C</span>
-        </div>
-        <div>
-          <span>Cowbell</span>
-          <span class="key">F</span>
-        </div>
-        <div>
-          <span>Tambourine</span>
-          <span class="key">B</span>
-        </div>
-        <div>
-          <span>Shinchan</span>
-          <span class="key" style="min-width: 135px">SPACE</span>
-        </div>
-        <div>
-          <span>Piano</span>
-          <span class="key">0</span>
-          <span class="key">1</span> ...
-          <span class="key">9</span>
-        </div>
-        <div>
-          <span>Marimba</span>
-          <span class="key">Q</span>
-          <span class="key">W</span> ...
-          <span class="key">P</span>
-        </div>
-      </div>
-    </header>
-    <div id="container">
-      <div class="cat">
-        <div id="head"></div>
-        <div id="mouth"></div>
-        <div id="paw-left"></div>
-        <div id="paw-right"></div>
-      </div>
-      <div class="instruments">
-        <div id="bongo"></div>
-        <div id="keyboard"></div>
-        <div id="cymbal"></div>
-        <div id="marimba"></div>
-        <div id="tambourine"></div>
-        <div id="cowbell"></div>
-      </div>
-    </div>
-    <div id="touch">
-      <div id="layers">
-        <select id="select-instrument">
-          <option value="layer-bongo" selected>Bongos</option>
-          <option value="layer-keyboard">Keyboard</option>
-          <option value="layer-shinchan">Shinchan</option>
-          <option value="layer-cymbal">Cymbal</option>
-          <option value="layer-marimba">Marimba</option>
-          <option value="layer-tambourine">Tambourine</option>
-          <option value="layer-cowbell">Cowbell</option>
-        </select>
-      </div>
-      <div id="taps">
-        <div class="tap" id="tap-left"><span>LEFT</span></div>
-        <div class="tap" id="tap-right"><span>RIGHT</span></div>
-        <div class="tap" id="tap-space"><span>SHINCHAN</span></div>
-        <div id="tap-keys">
+      <header>
+        <div id="keys">
           <div>
-            <div class="tap" id="tap-1"><span>1</span></div>
-            <div class="tap" id="tap-2"><span>2</span></div>
-            <div class="tap" id="tap-3"><span>3</span></div>
-            <div class="tap" id="tap-4"><span>4</span></div>
-            <div class="tap" id="tap-5"><span>5</span></div>
+            <span>Bongos</span>
+            <span class="key">A</span>
+            <span class="key">D</span>
           </div>
           <div>
-            <div class="tap" id="tap-6"><span>6</span></div>
-            <div class="tap" id="tap-7"><span>7</span></div>
-            <div class="tap" id="tap-8"><span>8</span></div>
-            <div class="tap" id="tap-9"><span>9</span></div>
-            <div class="tap" id="tap-0"><span>0</span></div>
+            <span>Cymbal</span>
+            <span class="key">C</span>
+          </div>
+          <div>
+            <span>Cowbell</span>
+            <span class="key">F</span>
+          </div>
+          <div>
+            <span>Tambourine</span>
+            <span class="key">B</span>
+          </div>
+          <div>
+            <span>Shinchan</span>
+            <span class="key" style="min-width: 135px">SPACE</span>
+          </div>
+          <div>
+            <span>Piano</span>
+            <span class="key">0</span>
+            <span class="key">1</span> ...
+            <span class="key">9</span>
+          </div>
+          <div>
+            <span>Marimba</span>
+            <span class="key">Q</span>
+            <span class="key">W</span> ...
+            <span class="key">P</span>
+          </div>
+        </div>
+      </header>
+      <div id="container">
+        <div class="cat">
+          <div id="head"></div>
+          <div id="mouth"></div>
+          <div id="paw-left"></div>
+          <div id="paw-right"></div>
+        </div>
+        <div class="instruments">
+          <div id="bongo"></div>
+          <div id="keyboard"></div>
+          <div id="cymbal"></div>
+          <div id="marimba"></div>
+          <div id="tambourine"></div>
+          <div id="cowbell"></div>
+        </div>
+      </div>
+      <div id="touch">
+        <div id="layers">
+          <select id="select-instrument">
+            <option value="layer-bongo" selected>Bongos</option>
+            <option value="layer-keyboard">Keyboard</option>
+            <option value="layer-shinchan">Shinchan</option>
+            <option value="layer-cymbal">Cymbal</option>
+            <option value="layer-marimba">Marimba</option>
+            <option value="layer-tambourine">Tambourine</option>
+            <option value="layer-cowbell">Cowbell</option>
+          </select>
+        </div>
+        <div id="taps">
+          <div class="tap" id="tap-left"><span>LEFT</span></div>
+          <div class="tap" id="tap-right"><span>RIGHT</span></div>
+          <div class="tap" id="tap-space"><span>SHINCHAN</span></div>
+          <div id="tap-keys">
+            <div>
+              <div class="tap" id="tap-1"><span>1</span></div>
+              <div class="tap" id="tap-2"><span>2</span></div>
+              <div class="tap" id="tap-3"><span>3</span></div>
+              <div class="tap" id="tap-4"><span>4</span></div>
+              <div class="tap" id="tap-5"><span>5</span></div>
+            </div>
+            <div>
+              <div class="tap" id="tap-6"><span>6</span></div>
+              <div class="tap" id="tap-7"><span>7</span></div>
+              <div class="tap" id="tap-8"><span>8</span></div>
+              <div class="tap" id="tap-9"><span>9</span></div>
+              <div class="tap" id="tap-0"><span>0</span></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </body>
 </html>
