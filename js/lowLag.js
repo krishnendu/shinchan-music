@@ -14,8 +14,6 @@ var lowLag = new function(){
 
 	this.audioTagTimeToLive = 5000;
 
-	//this.sm2url = 'sm2/swf/';
-
 	this.soundUrl = "";
 
 	this.debug = "console";
@@ -54,7 +52,6 @@ var lowLag = new function(){
 	
 
 	this.init = function(config){
-		//var divLowLag = document.getElementById("lowLag");
 		this.safelyRemoveElement(this.divLowLag);
 		this.divLowLag = this.createElement("div",{"id":"lowLag"});
 		document.body.appendChild(this.divLowLag);
@@ -69,9 +66,6 @@ var lowLag = new function(){
 			if(config['audioTagTimeToLive'] != undefined){
 				lowLag.audioTagTimeToLive = config['audioTagTimeToLive'];
 			} 
-			/*if(config['sm2url'] != undefined){
-				lowLag.sm2url = config['sm2url'];
-			}*/ 
 			if(config['urlPrefix'] != undefined){
 				lowLag.soundUrl = config['urlPrefix'];
 			} 
@@ -92,9 +86,6 @@ var lowLag = new function(){
 			
 		}
 		
-
-		//var format = "sm2";
-		//if(force != undefined) format = force;
 		if(force == undefined) {
 			if(window.AudioContext || window.webkitAudioContext ) format = 'audioContext';
 			else if(navigator.userAgent.indexOf("Firefox")!=-1) format = 'audioTag';
@@ -117,68 +108,8 @@ var lowLag = new function(){
 				this.load= this.loadSoundAudioTag;
 				this.play = this.playSoundAudioTag;
 			break;
-
-/*			case 'sm2':
-				this.msg("init SoundManager2");
-
-				this.load = this.loadSoundSM2;
-				this.play = this.playSoundSM2;
-				lowLag.msg("loading SM2 from "+lowLag.sm2url);
-				soundManager.setup({ url: lowLag.sm2url, useHighPerformance:true, 
-					onready:lowLag.sm2Ready , debugMode: true})
-
-
-			break;
-*/
-		}		
-
-
+		}	
 	}
-	/*this.sm2IsReady = false;
-//sm2 has a callback that tells us when it's ready, so we may need to store
-//requests to loadsound, and then call sm2 once it has told us it is set.
-	this.sm2ToLoad = [];
-
-	this.loadSoundSM2 = function(url,tag){
-		if(lowLag.sm2IsReady){
-			lowLag.loadSoundSM2ForReals(url,tag);
-		} else {
-			lowLag.sm2ToLoad.push([url,tag]);
-		}
-	}
-
-	this.loadSoundSM2ForReals = function(urls,ptag){
-		var tag = lowLag.getTagFromURL(urls,ptag);
-		lowLag.msg('sm2 loading '+urls+' as tag ' + tag);
-		var urls = lowLag.getURLArray(urls); //coerce
-		for(var i = 0; i < urls.length; i++){
-			var url = lowLag.soundUrl + urls[i];
-			urls[i] = url;
-		}
-
-		soundManager.createSound({
-			id: tag,
-			autoLoad: true,
-			url: urls
-		});
-	};
-
-	this.sm2Ready = function(){
-		lowLag.sm2IsReady = true;
-		for(var i = 0 ; i < lowLag.sm2ToLoad.length; i++){
-			var urlAndTag = lowLag.sm2ToLoad[i];
-			lowLag.loadSoundSM2ForReals(urlAndTag[0],urlAndTag[1]);
-		}
-		lowLag.sm2ToLoad = [];
-	}
-
-	this.playSoundSM2 = function(tag){
-		lowLag.msg("playSoundSM2 "+tag);
-
-		soundManager.play(tag);
-	}
-*/
-
 
 //we'll use the tag they hand us, or else the url as the tag if it's a single tag,
 //or the first url 

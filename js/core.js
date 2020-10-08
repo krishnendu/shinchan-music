@@ -152,111 +152,123 @@ for (var tapKeysPerInstrument of Object.values(TapKeysPerLayerEnum)) {
   allLayers.push(...tapKeysPerInstrument);
 }
 allLayers = [...new Set(allLayers)];
-$(document).ready(function() {
-  lowLag.init({
-    'urlPrefix': './sounds/',
-    'debug': 'none'
-  });
-  $.load("bongo", 0, 1);
-  $.load("keyboard", 0, 9);
-  $.load("marimba", 0, 9);
-  $.loadSimple("shinchan");
-  $.loadSimple("cymbal");
-  $.loadSimple("tambourine");
-  $.loadSimple("cowbell");
-  $.layers("layer-bongo");
-  $("select#select-instrument").on("change", function() {
-    $.layers($(this).val());
-  });
+
+document.addEventListener("readystatechange", function(){
+  if(document.readyState==='complete'){
+    (function () {
+      lowLag.init({
+        'urlPrefix': './sounds/',
+        'debug': 'none'
+      });
+      window.load("bongo", 0, 1);
+      window.load("keyboard", 0, 9);
+      window.load("marimba", 0, 9);
+      window.loadSimple("shinchan");
+      window.loadSimple("cymbal");
+      window.loadSimple("tambourine");
+      window.loadSimple("cowbell");
+      window.layers("layer-bongo");
+      document.querySelector("select#select-instrument").addEventListener("change", function() {
+        window.layers(this.value);
+      });
+    })();
+  }
 });
-$.loadSimple = function(file) {
+
+window.loadSimple = function(file) {
   for (i = 0; i <= 1; i++) {
     lowLag.load([file + ".mp3", file + ".wav"], file + i);
   }
 }
-$.load = function(file, start, end) {
+window.load = function(file, start, end) {
   for (i = start; i <= end; i++) {
     lowLag.load([file + i + ".mp3", file + i + ".wav"], file + i);
   }
 }
-$.wait = function(callback, ms) {
+window.wait = function(callback, ms) {
   return window.setTimeout(callback, ms);
 }
-$.play = function(instrument, key, state) {
+window.play = function(instrument, key, state) {
   var instrumentName = Object.keys(InstrumentEnum).find(k => InstrumentEnum[k] === instrument).toLowerCase();
   var commonKey = KeyEnum[key];
   var id = "#" + (instrument == InstrumentEnum.SHINCHAN ? "mouth" : "paw-" + ((instrument == InstrumentEnum.BONGO ? commonKey : commonKey <= 5 && commonKey != 0 ? 0 : 1) == 0 ? "left" : "right"));
   if (state == true) {
-    if (jQuery.inArray(commonKey, pressed) !== -1) {
+    if (commonKey in pressed){
       return;
     }
     pressed.push(commonKey);
     if (instrument != InstrumentEnum.SHINCHAN) {
-      $(".instruments>div").each(function(index) {
-        $(this).css("visibility", ($(this).attr("id") === instrumentName) ? "visible" : "hidden");
+      document.querySelectorAll(".instruments > div").forEach(function(index) {
+        index.style.visibility=(index.id === instrumentName) ? "visible" : "hidden";
       });
     }
     lowLag.play(instrumentName + commonKey);
-    $.layers(Object.keys(LayersPerInstrumentEnum).find(k => LayersPerInstrumentEnum[k] == instrument), true);
+    window.layers(Object.keys(LayersPerInstrumentEnum).find(k => LayersPerInstrumentEnum[k] == instrument), true);
   } else {
     pressed.remove(commonKey);
   }
-  $(id).css("background-position-x", (state ? "-800px" : "0"));
+  document.querySelector(id).style["background-position-x"]=(state ? "-800px" : "0");
 }
-$.layers = function(selectedLayer) {
+window.layers = function(selectedLayer) {
   if (selectedLayer !== currentLayer) {
     currentLayer = selectedLayer;
     var layers = TapKeysPerLayerEnum[selectedLayer];
     if (layers != undefined) {
       for (var layer of allLayers) {
-        $("#" + layer).css("display", layers.includes(layer) ? "inline-block" : "none");
+        document.querySelector("#" + layer).style.display= layers.includes(layer) ? "inline-block" : "none";
       }
       var instrument = LayersPerInstrumentEnum[selectedLayer];
       var instrumentName = Object.keys(InstrumentEnum).find(k => InstrumentEnum[k] === instrument).toLowerCase();
       if (instrument != InstrumentEnum.SHINCHAN
 ) {
-        $(".instruments>div").each(function(index) {
-          $(this).css("visibility", ($(this).attr("id") === instrumentName) ? "visible" : "hidden");
+        document.querySelectorAll(".instruments > div").forEach(function(index) {
+          index.style.visibility=(index.id === instrumentName) ? "visible" : "hidden";
         });
       }
     }
     var layerPerKey = Object.keys(LayersPerInstrumentEnum);
     for (var i = 0; i < layerPerKey.length; i++) {
       if (layerPerKey[i] === selectedLayer) {
-        $("select#select-instrument>option:eq(" + i + ")").prop("selected", true);
+        document.querySelectorAll("select#select-instrument>option").forEach(function(){this.selected=true});
       }
     }
   }
 }
-$(document).bind("contextmenu", function(e) {
+document.addEventListener("contextmenu", function(e) {
   e.preventDefault();
 });
-$(document).on("mousedown mouseup", function(e) {
-  if (!window.matchMedia("(max-width: 769px)").matches && !$(e.target).is("a, a *")) {
+
+['mousedown','mouseup'].forEach(evnt =>
+  document.addEventListener(evnt ,  function(e) {
+  if (!window.matchMedia("(max-width: 769px)").matches && !e.target.tagName==='a') {
     var keyboardEquivalent = ClickKeyEquivalentEnum[e.which];
     if (keyboardEquivalent != undefined) {
       var instrument = InstrumentPerKeyEnum[keyboardEquivalent.toUpperCase()];
       var key = KeyEnum[keyboardEquivalent.toUpperCase()];
       if (instrument != undefined && key != undefined) {
-        $.play(instrument, key, e.type === "mousedown");
+        window.play(instrument, key, evnt === "mousedown");
       }
     }
   }
-});
-$(document).on("keydown keyup", function(e) {
+}));
+
+['keydown','keyup'].forEach(evnt =>
+  document.addEventListener(evnt ,  function(e) {
   var instrument = InstrumentPerKeyEnum[e.key.toUpperCase()];
   var key = KeyEnum[e.key.toUpperCase()];
   if (instrument != undefined && key != undefined) {
-    $.play(instrument, key, e.type === "keydown");
+    window.play(instrument, key, evnt === "keydown");
   }
-});
-$(document).on("touchstart touchend", function(e) {
+}));
+
+['touchstart','touchend'].forEach(evnt =>
+  document.addEventListener(evnt ,  function(e) {
   if (e.target.classList.contains("layer")) {
-    if (e.type === "touchstart") {
-      $(e.target).addClass("highlight");
-      $.layers(e.target.id, true);
+    if (evnt === "touchstart") {
+      e.target.classList.add("highlight");
+      window.layers(e.target.id, true);
     } else {
-      $(e.target).removeClass("highlight");
+      e.target.classList.remove("highlight");
     }
   } else {
     var instrument = LayersPerInstrumentEnum[currentLayer];
@@ -267,16 +279,16 @@ $(document).on("touchstart touchend", function(e) {
         if (instrumentName != undefined && keys[instrumentName] != undefined) {
           for (var key of keys[instrumentName]) {
             if (key != undefined) {
-              if (e.type === "touchstart") {
-                $(e.target).addClass("highlight");
+              if (evnt === "touchstart") {
+                e.target.classList.add("highlight");
               } else {
-                $(e.target).removeClass("highlight");
+                e.target.classList.remove("highlight");
               }
-              $.play(instrument, key, e.type === "touchstart");
+              window.play(instrument, key, evnt === "touchstart");
             }
           }
         }
       }
     }
   }
-});
+}));
