@@ -301,14 +301,28 @@ document.addEventListener("contextmenu", function (e) {
   })
 );
 
-["touchstart", "touchend"].forEach((evnt) =>
+//
+["touchstart", "touchend", "click"].forEach((evnt) =>
   document.addEventListener(evnt, function (e) {
+    if (e.target.classList.contains("keytap")){
+      console.log(e);
+    }
+  })
+);
+
+["touchstart", "touchend", "click"].forEach((evnt) =>
+  document.addEventListener(evnt, function (e) {
+    // console.log(e.target);
+
     if (e.target.classList.contains("layer")) {
+      
       if (evnt === "touchstart") {
         e.target.classList.add("highlight");
+        console.log("tstart");
         window.layers(e.target.id, true);
       } else {
         e.target.classList.remove("highlight");
+        console.log("tend");
       }
     } else {
       var instrument = LayersPerInstrumentEnum[currentLayer];
