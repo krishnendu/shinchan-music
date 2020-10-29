@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Shinchan Music Band</title>
     <meta charset="UTF-8"/>
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0"
     />
+    <meta name="theme-color" content="#1B1B1B" >
+	  <link rel="manifest" href="manifest.json">
+	  <link rel="apple-touch-icon" href='icon150x150.png'>
     <meta name="author" content="Krishnendu Chatterjee, Suman majhi and Reetam Dutta">
-    <meta name="description" content="Shinchan band, music , instument,inspired from bongo.cat"> 
+    <meta name="description" content="Shinchan band, music , instument,inspired from bongo.cat">
+    <link rel="shortcut icon" href="./icon150x150.png" />
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans"
       rel="stylesheet"
     />
-    <link href="./style/style1.css" rel="stylesheet" />
-    <script src="./js/lowLag.js"></script>
-    <script src="./js/index1.js"></script>
-    <!-- <script src="./js/core.js"></script> -->
+    <link href="./style/style.css" rel="stylesheet" />
   </head>
   <body>
+  <div id="loader" class="loadercenter"></div>
     <header style="display: none">
       <div id="keys">
         <div>
@@ -56,7 +58,7 @@
         </div>
       </div>
     </header>
-    <div id="info">&#x1F6C8</div>
+    <div id="info">&#x24D8</div>
     <div id="container">
       <div class="shinchan">
         <div id="head"></div>
@@ -150,11 +152,13 @@
         <div class="keytap inact">v</div>
         <div class="keytap">b</div>
         <div class="keytap inact">n</div>
-        <div class="keytap inact">&#x1F6C8</div>
+        <div class="keytap inact">m</div>
       </div>
       <div class="row">
-        <div class="keytap space">Space</div>
+        <div class="keytap space">SPACE</div>
       </div>
     </div>
+    <script src="./js/lowLag.js"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>
