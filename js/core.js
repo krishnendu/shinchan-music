@@ -1,6 +1,7 @@
 Array.prototype.remove = function (el) {
   return this.splice(this.indexOf(el), 1);
 };
+const commonKeyInstrument = ['bongo','keyboard','marimba'];
 const InstrumentEnum = Object.freeze({
   BONGO: 0,
   KEYBOARD: 1,
@@ -178,9 +179,9 @@ document.addEventListener("readystatechange", function () {
 });
 
 window.loadSimple = function (file) {
-  for (i = 0; i <= 1; i++) {
-    lowLag.load([file + ".mp3", file + ".wav"], file + i);
-  }
+  //for (i = 0; i <= 1; i++) {
+    lowLag.load([file + ".mp3", file + ".wav"], file);
+  //}
 };
 window.load = function (file, start, end) {
   for (i = start; i <= end; i++) {
@@ -218,7 +219,12 @@ window.play = function (instrument, key, state) {
           index.id === instrumentName ? "visible" : "hidden";
       });
     }
-    lowLag.play(instrumentName + commonKey);
+
+    if(instrumentName in commonKeyInstrument)
+      lowLag.play(instrumentName + commonKey);
+    else
+      lowLag.play(instrumentName);
+
     window.layers(
       Object.keys(LayersPerInstrumentEnum).find(
         (k) => LayersPerInstrumentEnum[k] == instrument
@@ -305,7 +311,7 @@ document.addEventListener("contextmenu", function (e) {
 ["touchstart", "touchend", "click"].forEach((evnt) =>
   document.addEventListener(evnt, function (e) {
     if (e.target.classList.contains("keytap")){
-      console.log(e);
+      // lowLag.play('shinchan');
     }
   })
 );

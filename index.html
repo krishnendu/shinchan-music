@@ -2,157 +2,159 @@
 <html>
   <head>
     <title></title>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0"
     />
+    <meta name="author" content="Krishnendu Chatterjee and Suman majhi">
+    <meta name="description" content="Shinchan band, music , instument,inspired from bongo.cat"> 
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans"
       rel="stylesheet"
     />
-    <link href="./style/style.css" rel="stylesheet" />
+    <link href="./style/style1.css" rel="stylesheet" />
     <script src="./js/lowLag.js"></script>
-    <script src="./js/core.js"></script>
+    <script src="./js/index1.js"></script>
+    <!-- <script src="./js/core.js"></script> -->
   </head>
   <body>
-      <header>
-        <div id="keys">
-          <div>
-            <span>Bongos</span>
-            <span class="key">A</span>
-            <span class="key">D</span>
-          </div>
-          <div>
-            <span>Cymbal</span>
-            <span class="key">C</span>
-          </div>
-          <div>
-            <span>Cowbell</span>
-            <span class="key">F</span>
-          </div>
-          <div>
-            <span>Tambourine</span>
-            <span class="key">B</span>
-          </div>
-          <div>
-            <span>Shinchan</span>
-            <span class="key" style="min-width: 135px">SPACE</span>
-          </div>
-          <div>
-            <span>Piano</span>
-            <span class="key">0</span>
-            <span class="key">1</span> ...
-            <span class="key">9</span>
-          </div>
-          <div>
-            <span>Marimba</span>
-            <span class="key">Q</span>
-            <span class="key">W</span> ...
-            <span class="key">P</span>
-          </div>
+    <header style="display: none">
+      <div id="keys">
+        <div>
+          <span>Bongos</span>
+          <span class="key">A</span>
+          <span class="key">D</span>
         </div>
-      </header>
-      <div id="container">
-        <div class="cat">
-          <div id="head"></div>
-          <div id="mouth"></div>
-          <div id="paw-left"></div>
-          <div id="paw-right"></div>
+        <div>
+          <span>Cymbal</span>
+          <span class="key">C</span>
         </div>
-        <div class="instruments">
-          <div id="bongo"></div>
-          <div id="keyboard"></div>
-          <div id="cymbal"></div>
-          <div id="marimba"></div>
-          <div id="tambourine"></div>
-          <div id="cowbell"></div>
+        <div>
+          <span>Cowbell</span>
+          <span class="key">F</span>
+        </div>
+        <div>
+          <span>Tambourine</span>
+          <span class="key">B</span>
+        </div>
+        <div>
+          <span>Shinchan</span>
+          <span class="key" style="min-width: 135px">SPACE</span>
+        </div>
+        <div>
+          <span>Piano</span>
+          <span class="key">0</span>
+          <span class="key">1</span> ...
+          <span class="key">9</span>
+        </div>
+        <div>
+          <span>Marimba</span>
+          <span class="key">Q</span>
+          <span class="key">W</span> ...
+          <span class="key">P</span>
         </div>
       </div>
-      <div id="touch">
-        <div id="layers">
-          <select id="select-instrument">
-            <option value="layer-bongo" selected>Bongos</option>
-            <option value="layer-keyboard">Keyboard</option>
-            <option value="layer-shinchan">Shinchan</option>
-            <option value="layer-cymbal">Cymbal</option>
-            <option value="layer-marimba">Marimba</option>
-            <option value="layer-tambourine">Tambourine</option>
-            <option value="layer-cowbell">Cowbell</option>
-          </select>
-        </div>
-        <div id="taps">
-          <div class="tap" id="tap-left"><span>LEFT</span></div>
-          <div class="tap" id="tap-right"><span>RIGHT</span></div>
-          <div class="tap" id="tap-space"><span>SHINCHAN</span></div>
-          <div id="tap-keys">
-            <div>
-              <div class="tap" id="tap-1"><span>1</span></div>
-              <div class="tap" id="tap-2"><span>2</span></div>
-              <div class="tap" id="tap-3"><span>3</span></div>
-              <div class="tap" id="tap-4"><span>4</span></div>
-              <div class="tap" id="tap-5"><span>5</span></div>
-            </div>
-            <div>
-              <div class="tap" id="tap-6"><span>6</span></div>
-              <div class="tap" id="tap-7"><span>7</span></div>
-              <div class="tap" id="tap-8"><span>8</span></div>
-              <div class="tap" id="tap-9"><span>9</span></div>
-              <div class="tap" id="tap-0"><span>0</span></div>
-            </div>
+    </header>
+    <div id="info">&#x1F6C8</div>
+    <div id="container">
+      <div class="shinchan">
+        <div id="head"></div>
+        <div class="active" id="mouth"></div>
+        <div class="a" id="paw-left"></div>
+        <div class="a" id="paw-right"></div>
+      </div>
+      <div class="instruments">
+        <div id="bongo"></div>
+        <div id="keyboard"></div>
+        <div id="cymbal"></div>
+        <div id="marimba"></div>
+        <div id="tambourine"></div>
+        <div id="cowbell"></div>
+      </div>
+    </div>
+    <div id="touch" style="display: none">
+      <div id="layers">
+        <select id="select-instrument">
+          <option value="layer-bongo" selected>Bongos</option>
+          <option value="layer-keyboard">Keyboard</option>
+          <option value="layer-shinchan">Shinchan</option>
+          <option value="layer-cymbal">Cymbal</option>
+          <option value="layer-marimba">Marimba</option>
+          <option value="layer-tambourine">Tambourine</option>
+          <option value="layer-cowbell">Cowbell</option>
+        </select>
+      </div>
+      <div id="taps">
+        <div class="tap" id="tap-left"><span>LEFT</span></div>
+        <div class="tap" id="tap-right"><span>RIGHT</span></div>
+        <div class="tap" id="tap-space"><span>SHINCHAN</span></div>
+        <div id="tap-keys">
+          <div>
+            <div class="tap" id="tap-1"><span>1</span></div>
+            <div class="tap" id="tap-2"><span>2</span></div>
+            <div class="tap" id="tap-3"><span>3</span></div>
+            <div class="tap" id="tap-4"><span>4</span></div>
+            <div class="tap" id="tap-5"><span>5</span></div>
+          </div>
+          <div>
+            <div class="tap" id="tap-6"><span>6</span></div>
+            <div class="tap" id="tap-7"><span>7</span></div>
+            <div class="tap" id="tap-8"><span>8</span></div>
+            <div class="tap" id="tap-9"><span>9</span></div>
+            <div class="tap" id="tap-0"><span>0</span></div>
           </div>
         </div>
-        
       </div>
-      <div id="touch1">
-        <div class="row">
-          <div class="keytap">1</div>
-          <div class="keytap">2</div>
-          <div class="keytap">3</div>
-          <div class="keytap">4</div>
-          <div class="keytap">5</div>
-          <div class="keytap">6</div>
-          <div class="keytap">7</div>
-          <div class="keytap">8</div>
-          <div class="keytap">9</div>
-          <div class="keytap">0</div>
-        </div>
-        <div class="row">
-          <div class="keytap">q</div>
-          <div class="keytap">w</div>
-          <div class="keytap">e</div>
-          <div class="keytap">r</div>
-          <div class="keytap">t</div>
-          <div class="keytap">y</div>
-          <div class="keytap">u</div>
-          <div class="keytap">i</div>
-          <div class="keytap">o</div>
-          <div class="keytap">p</div>
-        </div>
-        <div class="row">
-          <div class="keytap">a</div>
-          <div class="keytap">s</div>
-          <div class="keytap">d</div>
-          <div class="keytap">f</div>
-          <div class="keytap">g</div>
-          <div class="keytap">h</div>
-          <div class="keytap">j</div>
-          <div class="keytap">k</div>
-          <div class="keytap">l</div>
-        </div>
-        <div class="row">
-          <div class="keytap">z</div>
-          <div class="keytap">x</div>
-          <div class="keytap">c</div>
-          <div class="keytap">v</div>
-          <div class="keytap">b</div>
-          <div class="keytap">n</div>
-          <div class="keytap">m</div>
-        </div>
-        <div class="row">
-          <div class="keytap">Space</div>
-        </div>
+    </div>
+    <div id="touch1">
+      <div class="row">
+        <div class="keytap">1</div>
+        <div class="keytap">2</div>
+        <div class="keytap">3</div>
+        <div class="keytap">4</div>
+        <div class="keytap">5</div>
+        <div class="keytap">6</div>
+        <div class="keytap">7</div>
+        <div class="keytap">8</div>
+        <div class="keytap">9</div>
+        <div class="keytap">0</div>
       </div>
-      
+      <div class="row">
+        <div class="keytap">q</div>
+        <div class="keytap">w</div>
+        <div class="keytap">e</div>
+        <div class="keytap">r</div>
+        <div class="keytap">t</div>
+        <div class="keytap">y</div>
+        <div class="keytap">u</div>
+        <div class="keytap">i</div>
+        <div class="keytap">o</div>
+        <div class="keytap">p</div>
+      </div>
+      <div class="row">
+        <div class="keytap">a</div>
+        <div class="keytap inact">s</div>
+        <div class="keytap">d</div>
+        <div class="keytap">f</div>
+        <div class="keytap inact">g</div>
+        <div class="keytap inact">h</div>
+        <div class="keytap inact">j</div>
+        <div class="keytap inact">k</div>
+        <div class="keytap inact">l</div>
+      </div>
+      <div class="row">
+        <div class="keytap inact">z</div>
+        <div class="keytap inact">x</div>
+        <div class="keytap">c</div>
+        <div class="keytap inact">v</div>
+        <div class="keytap">b</div>
+        <div class="keytap inact">n</div>
+        <div class="keytap inact">&#x1F6C8</div>
+      </div>
+      <div class="row">
+        <div class="keytap space">Space</div>
+      </div>
+    </div>
   </body>
 </html>
