@@ -68,10 +68,10 @@ document.addEventListener("readystatechange", function () {
   }
 });
 
-["keydown", "touchstart"].forEach((event) =>
+["keypress", "touchstart"].forEach((event) =>
   window.addEventListener(event, (e) => {
     let key;
-    if (event !== 'keydown' && e.target.classList.contains("keytap")) {
+    if (event !== 'keypress' && e.target.classList.contains("keytap")) {
       key = e.target.innerText.toLowerCase();
       if(key==='space')
         key=' ';
