@@ -1,0 +1,18 @@
+---
+layout: none
+permalink: .well-known/assetlinks.json
+---
+[
+    {
+      "relation": [
+        "delegate_permission/common.handle_all_urls"
+      ],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "in.krisna.shinchanband.twa",
+        "sha256_cert_fingerprints": [
+          "1B:85:02:70:35:EA:4B:D2:BE:63:57:48:1B:DA:14:1C:6F:98:59:FF:54:30:30:9F:81:37:BE:5B:70:F7:23:AB"
+        ]
+      }
+    }
+  ]
